@@ -1,5 +1,7 @@
+import {Jobs} from "./db.js"
+
 export const resolvers = {
   Query: {
-    jobs: () => [],
+    jobs: () => Jobs.findAll(),
   }
 }
