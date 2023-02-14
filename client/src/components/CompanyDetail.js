@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import {useParams} from 'react-router';
 import {getCompanyById} from '../graphql/queries';
 
-function CompanyDetail() {
+export const CompanyDetail = () => {
   const [company, setCompany] = useState(null)
   const {companyId} = useParams();
 
@@ -23,5 +23,3 @@ function CompanyDetail() {
     </div>
   );
 }
-
-export default CompanyDetail;

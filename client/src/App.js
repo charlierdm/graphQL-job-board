@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Route, Routes } from 'react-router-dom';
 import { isLoggedIn } from './auth';
-import CompanyDetail from './components/CompanyDetail';
+import {CompanyDetail} from './components/CompanyDetail';
 import {LoginForm} from './components/LoginForm';
 import {JobBoard} from './components/JobBoard';
 import {JobDetail} from './components/JobDetail';
