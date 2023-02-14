@@ -6,7 +6,7 @@ export const JobBoard = () => {
   const [jobs, setJobs] = useState([])
 
   useEffect(() => {
-    getJobs().then(data => setJobs(data))
+    getJobs().then(setJobs)
   }, [])
 
   return (
