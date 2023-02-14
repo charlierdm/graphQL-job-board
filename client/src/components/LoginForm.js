@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { login } from '../auth';
 
-function LoginForm({ onLogin }) {
+export const LoginForm = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
@@ -56,5 +56,3 @@ function LoginForm({ onLogin }) {
     </form>
   );
 }
-
-export default LoginForm;

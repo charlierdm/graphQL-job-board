@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function JobForm() {
+export const JobForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
@@ -48,5 +48,3 @@ function JobForm() {
     </div>
   );
 }
-
-export default JobForm;

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { logout } from '../auth';
 
-function NavBar({ loggedIn, onLogout }) {
+export const NavBar = ({ loggedIn, onLogout }) => {
   const handleLogout = () => {
     logout();
     onLogout();
@@ -32,5 +32,3 @@ function NavBar({ loggedIn, onLogout }) {
     </nav>
   );
 }
-
-export default NavBar;

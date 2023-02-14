@@ -2,7 +2,7 @@ import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { jobs } from '../fake-data';
 
-function JobDetail() {
+export const JobDetail = () => { 
   const { jobId } = useParams();
 
   const job = jobs.find((job) => job.id === jobId);
@@ -23,4 +23,3 @@ function JobDetail() {
   );
 }
 
-export default JobDetail;
