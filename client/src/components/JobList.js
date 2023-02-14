@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
-function JobItem({ job }) {
+export const JobItem = ({job}) => {
   const title = job.company ? `${job.title} at ${job.company.name}` : job.title;
   return (
     <li className="media">
@@ -13,7 +13,7 @@ function JobItem({ job }) {
   );
 }
 
-function JobList({ jobs }) {
+export const JobList = ({jobs}) => {
   return (
     <ul className="box">
       {jobs.map((job) => (
@@ -22,5 +22,3 @@ function JobList({ jobs }) {
     </ul>
   );
 }
-
-export default JobList;

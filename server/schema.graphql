@@ -8,6 +8,7 @@ type Company {
   id: ID!
   description: String
   name: String!
+  jobs: [Job!]
 }
 
 type Job {

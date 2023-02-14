@@ -7,6 +7,10 @@ export const resolvers = {
     jobs: () => Jobs.findAll(),
   },
 
+  Company: {
+    jobs: (company) => Jobs.findAll(job => job.companyId === company.id)
+  },
+
   Job: {
     company: (job) => Companys.findById(job.companyId),
   }
