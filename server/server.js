@@ -19,7 +19,7 @@ app.use(cors(), express.json(), expressjwt({
 
 app.post('/login', async (req, res) => {
   const {email, password} = req.body
-  const user = await User.findOne((user) => user.email === email)
+  const user = await Users.findOne((user) => user.email === email)
   if (user && user.password === password) {
     const token = jwt.sign({sub: user.id}, JWT_SECRET)
     res.json({token})  
