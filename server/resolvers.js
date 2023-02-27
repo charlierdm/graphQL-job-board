@@ -2,9 +2,15 @@ import {Companys, Jobs} from "./db.js"
 
 export const resolvers = {
   Query: {
-    company: (_, args) => Companys.findById(args.id),
-    job: (_, args) => Jobs.findById(args.id),
+    company: (_, {id}) => Companys.findById(id),
+    job: (_, {id}) => Job.findById(id),
     jobs: () => Jobs.findAll(),
+  },
+
+  Mutation: {
+    createJob: (_, {title, companyId, description}) => {
+      Jobs.create({title, companyId, description})
+    }
   },
 
   Company: {
