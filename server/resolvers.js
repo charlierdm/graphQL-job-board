@@ -9,10 +9,11 @@ export const resolvers = {
 
   Mutation: {
     createJob: (_, args, context) => {
-      if (!context.auth) {
+      if (!context.user) {
         throw new Error('unauthorized')
       }
-      return Jobs.create(args.input)
+      const companyId = context.user.companyId
+      return Jobs.create({...args.input, companyId})
     },
     deleteJob: (_, args) => Jobs.delete(args.id),
     updateJob: (_, args) => Jobs.update(args.input)
