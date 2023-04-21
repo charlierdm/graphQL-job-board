@@ -2,15 +2,20 @@ import {Companys, Jobs} from "./db.js"
 
 export const resolvers = {
   Query: {
-    company: (_, {id}) => Companys.findById(id),
-    job: (_, {id}) => Jobs.findById(id),
+    company: (_, args) => Companys.findById(args.id),
+    job: (_, args) => Jobs.findById(args.id),
     jobs: () => Jobs.findAll(),
   },
 
   Mutation: {
-    createJob: (_, {input}) => Jobs.create(input),
-    deleteJob: (_, {id}) => Jobs.delete(id),
-    updateJob: (_, {input}) => Jobs.update(input)
+    createJob: (_, args, context) => {
+      if (!context.auth) {
+        throw new Error('unauthorized')
+      }
+      return Jobs.create(args.input)
+    },
+    deleteJob: (_, args) => Jobs.delete(args.id),
+    updateJob: (_, args) => Jobs.update(args.input)
   },
 
   Company: {
