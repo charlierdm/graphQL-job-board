@@ -53,7 +53,7 @@ export async function getCompany(id) {
       }
     }
   `;
-    const {data} = await apolloClient({
+    const {data} = await apolloClient.query({
       query,
       variables: {
         id,
@@ -77,7 +77,7 @@ export async function getJob(id) {
       }
     }
   `;
-  const {data} = await apolloClient({
+  const {data} = await apolloClient.query({
     query,
     variables: {
       id,
