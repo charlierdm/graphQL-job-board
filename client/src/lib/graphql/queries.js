@@ -25,10 +25,16 @@ export async function createJob({ title, description }) {
       }
     }
   `;
-  const { job } = await client.request(mutation, {
-    input: { title, description },
-  });
-  return job;
+  const {data} = apolloClient.mutate({
+    mutation,
+    variables: {
+      input: {
+        title,
+        description,
+      }
+    }
+  })
+  return data.job;
 }
 
 export async function getCompany(id) {
