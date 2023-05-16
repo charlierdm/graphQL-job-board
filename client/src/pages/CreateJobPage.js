@@ -1,17 +1,17 @@
-import {useState} from 'react';
-import {useNavigate} from 'react-router'
-import {createJob} from '../graphql/queries';
+import { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { createJob } from '../lib/graphql/queries';
 
-export const JobForm = () => {
-  const navigate = useNavigate()
+function CreateJobPage() {
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    const job = await createJob({title, description})
-    console.log('job created:', job)
-    navigate(`/jobs/${job.id}`)
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const job = await createJob({ title, description });
+    console.log('job created:', job);
+    navigate(`/jobs/${job.id}`);
   };
 
   return (
@@ -27,7 +27,7 @@ export const JobForm = () => {
             </label>
             <div className="control">
               <input className="input" type="text" value={title}
-                onChange={e => setTitle(e.target.value)}
+                onChange={(event) => setTitle(event.target.value)}
               />
             </div>
           </div>
@@ -37,7 +37,7 @@ export const JobForm = () => {
             </label>
             <div className="control">
               <textarea className="textarea" rows={10} value={description}
-                onChange={e => setDescription(e.target.value)}
+                onChange={(event) => setDescription(event.target.value)}
               />
             </div>
           </div>
@@ -53,3 +53,5 @@ export const JobForm = () => {
     </div>
   );
 }
+
+export default CreateJobPage;

@@ -1,21 +1,21 @@
-import {useState} from 'react'
-import {login} from '../auth'
+import { useState } from 'react';
+import { login } from '../lib/auth';
 
-export const LoginForm = ({ onLogin }) => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState(false)
+function LoginPage({ onLogin }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(false);
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
-    setError(false)
-    const success = await login(email, password)
-    if (success) {
-      onLogin()
+    event.preventDefault();
+    setError(false);
+    const user = await login(email, password);
+    if (user) {
+      onLogin(user);
     } else {
-      setError(true)
+      setError(true);
     }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -54,5 +54,7 @@ export const LoginForm = ({ onLogin }) => {
         </div>
       </div>
     </form>
-  )
+  );
 }
+
+export default LoginPage;
